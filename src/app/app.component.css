@@ -1,0 +1,35 @@
+#vis{
+  font-family: Arial;
+  color:black;
+  border: none;
+  margin-top: 5px;
+  border-radius: 2px;
+}
+
+nav {
+  background-color: rgb(223, 233, 229);
+  padding:2px 5px;
+}
+
+ul {
+  position: relative;
+  top: 10%;
+  margin-bottom:  4 px;
+  padding: 1px 1px 1px 1px;
+}
+
+li {
+  display:inline-block;
+
+}
+
+.contact {
+position: relative;
+
+}
+
+li a
+{
+  margin: 0;
+  width: 100px;
+}

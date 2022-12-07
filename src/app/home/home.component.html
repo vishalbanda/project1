@@ -1,0 +1,98 @@
+
+<div class="container fluid">
+  <form #userForm="ngForm" *ngIf="!submitted" (ngSubmit)="onSubmit(userForm)" novalidate>
+      <!-- {{userForm.form.valid}}
+      <br>
+      {{userForm.value | json}}  -->
+
+      <!-- {{ userModel | json}} -->
+      <div class="form-group">
+          <label>Name:</label>
+          <input type="text" required #name1="ngModel" name="name1"
+              [class.is-invalid]="name1.invalid  && name1.touched" class="form-control " name="username"
+              [(ngModel)]="userModel.name ">
+      </div>
+      <small class="text-danger" [class.d-none]="name1.valid || name1.untouched">name is required </small>
+
+
+      <div class="form-group">
+          <label> Email</label>
+          <input required [class.is-invalid]="email1.invalid  && email1.touched" #email1="ngModel"
+          type="text" class="form-control" name="email1" [(ngModel)]="userModel.email">
+      </div>
+      <small class="text-danger" [class.d-none]="email1.valid || email1.untouched">Email is required </small>
+
+
+      <div class="form-group">
+          <label>Phoneno:</label>
+          <input required type="text" #phone1="ngModel" pattern="^\d{10}$"
+              [class.is-invalid]=" phone1.invalid && phone1.touched " class="form-control" name="phone"
+              [(ngModel)]="userModel.phone1">
+          <!-- <small class="text-danger" [class.d-none]="phone1.valid || phone1.untouched">phone number is reqiured 10digits</small> -->
+          <div *ngIf="phone1.errors && (phone1.invalid || phone1.touched)">
+              <small class="text-danger" *ngIf="phone1.errors">required </small>
+              <small class="text-danger" *ngIf="phone1.errors">10 digits</small>
+          </div>
+      </div>
+
+
+
+      <label> Choose :</label>
+      <div class="form-group">
+          <select (bur)="validateTopic(topic1.value)" (change)="validateTopic(topic1.value)" #topic1="ngModel"
+              [class.is-invalid]="topicHasError && topic1.touched" class="form-control" name="topic"
+              [(ngModel)]="userModel.topics">
+              <option value="default"> I am interested in </option>
+              <option>C Sharp</option>
+              <option *ngFor="let topic1 of topics">{{ topic1 }}</option>
+          </select>
+          <small class="text-danger" [class.d-none]="!topicHasError || topic1.untouched">please choose topic</small>
+      </div>
+
+
+      <div class="mb-3">
+          <label>Time preference</label>
+          <div class="form-check">
+              <input type="radio" class="form-check-input" name="timepreference" value="Morning" #time="ngModel"
+                  [(ngModel)]="userModel.timepreference" [class.is-invalid]="time.invalid  && time.touched">
+              <label>Morning(9am-12pm)</label>
+          </div>
+          <div class="form-check">
+              <input type="radio" class="form-check-input" name="timepreference1" value="Evening"
+                  [(ngModel)]="userModel.timepreference" [class.is-invalid]="time.invalid  && time.touched">
+              <label>Evening(5pm-8pm)</label>
+          </div>
+          <small class="text-danger" [class.d-none]="time.valid || time.untouched">please choose topic</small>
+      </div>
+
+     
+      
+
+      
+
+      <div class="form-check-mb3">
+          <input type="checkbox" class="form-check-input" name="subscribe" [(ngModel)]="userModel.subscribe1">
+          <label class="form-check-label">Send me promotional offers</label>
+      </div>
+
+      <div class="p-field p-col-12 p-md-4">
+        <label for="icon">Icon</label>
+        <div>
+           <p-calendar [showIcon]="true" inputId="icon"></p-calendar></div>
+        </div>
+     <!-- <div><p-calendar  [inline]="true" [showWeek]="true"></p-calendar></div> -->
+
+      <div class="p-field p-col-12 p-md-4">
+        <label for="range">Range</label>
+        <br>
+        <p-calendar selectionMode="range" [readonlyInput]="true" inputId="range"></p-calendar>
+    </div>
+      <button [disabled]="userForm.form.invalid || topicHasError"
+      class="btn btn-primary" type="submit">submit form</button>
+  </form>
+</div>
+<ng-content></ng-content>
+Question:
+<ng-content ></ng-content>
+
+

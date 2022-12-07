@@ -1,0 +1,22 @@
+<i class="fa-solid fa-house-user" aria-hidden="true"></i>
+<i class="fa-solid fa-house"></i>
+<nav>
+  <ul class="vis">
+      <li class="home"><a type="button" class="btn btn-primary" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="Home">Home</a></li>
+      <li class="courses"><a type="button" class="btn btn-primary" [routerLink]="['Courses']">Courses</a></li>
+      <li><a type="button" class="btn btn-primary" routerLink="About">About</a></li>
+      <li><a type="button" class ="btn btn-primary" routerLinkactive="Active" routerLink="/About">Load</a></li>
+      <li class="contact"><a type="button" class="btn btn-primary" routerLinkActive="active" routerLink="Contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- 
+<router-outlet></router-outlet> -->
+<i class="fa-solid fa-house-user"></i>
+<i class="fa-solid fa-house"></i>
+<app-home>
+  <p >
+    Is content projection cool?
+  </p>
+  <p>Let's learn about content projection!</p>
+</app-home>
